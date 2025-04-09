@@ -1,0 +1,30 @@
+﻿@model LibraryManagement.Models.Entity.Tbl_Category
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="color:orange">Kategori Güncelleme Ekranı</h2>
+
+
+
+<form method="post">
+
+    <div style="margin-top:15px">
+
+        <label>ID</label>
+        @Html.TextBoxFor(m => m.CategoryID, new { @class = "form-control", @readonly = "Readonly" })
+
+    </div>
+
+    <div style="margin-top:15px">
+
+        <label>Kategori</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+    </div>
+    <br />
+    <button class="btn btn-success">Güncelle</button>
+
+</form>
+

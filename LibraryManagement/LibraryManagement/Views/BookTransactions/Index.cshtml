@@ -1,0 +1,42 @@
+﻿@using LibraryManagement.Models.Entity
+@model List<Tbl_Process>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="color:#ba23c3">Müşteride Bulunan Kitaplar</h2>
+<br />
+
+<table class="table table-striped" style="text-align:center">
+
+
+    <tr style="color: blueviolet; background-color: #D1D2E0">
+       
+        <th style="text-align:center ; color:blueviolet">Kitap Adı</th>
+        <th style="text-align:center ; color:blueviolet">Üye</th>
+        <th style="text-align:center ; color:blueviolet">Personel</th>
+        <th style="text-align:center ; color:blueviolet">Alış Tarihi</th>
+        <th style="text-align:center ; color:blueviolet">İade Tarihi</th>
+        <th style="text-align:center ; color:blueviolet">İade Al</th>
+
+
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+           
+            <td>@x.Tbl_Book.Name</td>
+            <td>@x.Tbl_Member.Name @x.Tbl_Member.Surname</td>
+            <td>@x.Tbl_Personel.Fullname</td>
+            <td>@Convert.ToDateTime(x.PurchaseDate).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(x.ReturnDate).ToString("dd/MM/yyyy")</td>
+            <td><a href="/BookTransactions/TransactionUpdate/@x.ProcessID" class="btn btn-group" style="background-color:#de7335 ; color:white">Kitabı iade et</a></td>
+        </tr>
+    }
+
+
+
+</table>
+

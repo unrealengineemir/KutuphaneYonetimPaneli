@@ -1,0 +1,62 @@
+﻿
+@model LibraryManagement.Models.Entity.Tbl_Member
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+<br />
+
+
+@using (Html.BeginForm("Index2", "Panel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <table class="table table-hover">
+
+        <tr>
+            <td><label style="font-weight:bolder ; background-color:yellow"> Mail :</label> @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", @readonly = "readonly" })</td>
+        </tr>
+
+        <tr>
+            <td>
+                <label style="font-weight:bolder ; background-color:yellow"> Soyad :</label>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <td><label style="font-weight: bolder; background-color: yellow">Soyad :</label>  @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })</td>
+        </tr>
+
+
+
+        <tr>
+            <td><label style="font-weight: bolder; background-color: yellow"> Kullanıcı Adı :</label> @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })</td>
+        </tr>
+
+        <tr>
+            <td><label style="font-weight: bolder; background-color: yellow"> Şifre :</label>  @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })</td>
+        </tr>
+
+        <tr>
+            <td>
+                <label style="font-weight: bolder; background-color: yellow"> Fotoğraf : </label>
+
+                <input type="file" name="Photo" />
+
+
+
+            </td>
+        </tr>
+
+        <tr>
+            <td><label style="font-weight: bolder; background-color: yellow"> Okul :</label>  @Html.TextBoxFor(x => x.School, new { @class = "form-control" })</td>
+        </tr>
+
+
+    </table>
+
+
+
+    <button class="btn btn-success">Güncelle</button>
+
+}

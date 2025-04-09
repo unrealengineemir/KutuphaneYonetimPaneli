@@ -1,0 +1,72 @@
+﻿@model LibraryManagement.Models.Entity.Tbl_Member
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="color:blue">Üye Ekleme Ekranı</h2>
+
+@using (Html.BeginForm("Add", "Member", FormMethod.Post))
+{
+
+<div style="margin-top:15px">
+
+    <label>Ad</label>
+    @Html.TextBoxFor(m=>m.Name ,new {@class="form-control" })
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Soyad</label>
+    @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Mail</label>
+    @Html.TextBoxFor(m => m.Mail, new { @class = "form-control" })
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Kullanıcı Adı</label>
+    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Şifre</label>
+    @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Fotoğraf</label>
+    @Html.TextBoxFor(m => m.Photo, new { @class = "form-control" })
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Telefon</label>
+    @Html.TextBoxFor(m => m.Telephone, new { @class = "form-control" })
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Okul</label>
+    @Html.TextBoxFor(m => m.School, new { @class = "form-control" })
+
+</div>
+
+<br />
+
+<button class="btn btn-primary">Üye Ekle</button>
+}
+

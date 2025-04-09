@@ -1,0 +1,8 @@
+﻿/* Tüm sayfalara uygulanacak genel arka plan resmi */
+body {
+    background-image: url('/Content/İmages/library4.jpg'); /* Arka plan resminin yolu */
+    background-size: cover; /* Resmin sayfayı tamamen kaplamasını sağlar */
+    background-position: center center; /* Resmin sayfada ortalanmasını sağlar */
+    background-repeat: no-repeat; /* Resmin tekrar etmemesini sağlar */
+    height: 100vh; /* Sayfa boyutuna göre arka planı uzat */
+}

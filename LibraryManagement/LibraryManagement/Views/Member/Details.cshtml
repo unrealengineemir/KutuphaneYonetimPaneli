@@ -1,0 +1,33 @@
+﻿@using LibraryManagement.Models.Entity
+@model List<Tbl_Process>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="color:mediumvioletred">@ViewBag.name @ViewBag.surname</h2>
+<br />
+<br />
+
+<table class="table table-striped">
+
+    <tr>
+        <td>Kitap Adı</td>
+        <td>Müşteriye Verilme Tarihi</td>
+        <td>Teslim Edilmesi Gereken Tarih</td>
+        <td>Müşterinin Teslim Tarihi</td>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+
+        <tr>
+            <td>@x.Tbl_Book.Name</td>
+            <td>@Convert.ToDateTime(x.PurchaseDate).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(x.ReturnDate).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(x.BroughDate).ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+
+</table>

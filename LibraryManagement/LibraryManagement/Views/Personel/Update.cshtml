@@ -1,0 +1,29 @@
+﻿@model LibraryManagement.Models.Entity.Tbl_Personel
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="color:orange">Kategori Güncelleme Ekranı</h2>
+
+
+@using (Html.BeginForm("Update", "Personel", FormMethod.Post))
+{
+
+    <div style="margin-top:15px">
+        <label>ID</label>
+        @Html.TextBoxFor(m => m.PersonelID, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+
+    <div style="margin-top:15px">
+        <label>Ad Soyad</label>
+        @Html.TextBoxFor(m => m.Fullname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Fullname, "", new { @style = "color:yellow" })
+    </div>
+
+    <br />
+
+    <button class="btn btn-success">Güncelle</button>
+
+}
+

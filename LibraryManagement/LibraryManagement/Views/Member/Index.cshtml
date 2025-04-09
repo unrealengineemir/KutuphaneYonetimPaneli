@@ -1,0 +1,58 @@
+﻿@using LibraryManagement.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Tbl_Member>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="text-align:center ; color:darkcyan">Üye Listesi</h2>
+<br />
+
+<table class="table table-striped" style="text-align:center">
+
+    <tr style="color: blueviolet; background-color: #D1D2E0">
+        <th style="text-align:center ; color:blueviolet">ID</th>
+        <th style="text-align:center ; color:blueviolet">Ad</th>
+        <th style="text-align: center; color: blueviolet">Soyad</th>
+        <th style="text-align: center; color: blueviolet">Mail</th>
+        <th style="text-align: center; color: blueviolet">Kullanıcı Adı</th>
+        <th style="text-align: center; color: blueviolet">Şifre</th>
+        <th style="text-align: center; color: blueviolet">Fotoğraf</th>
+        <th style="text-align: center; color: blueviolet">Telefon</th>
+        <th style="text-align: center; color: blueviolet">Okul</th>
+        <th style="text-align: center; color: blueviolet">Düzenle</th>
+        <th style="text-align: center; color: blueviolet">Sil</th>
+        <th style="text-align: center; color: blueviolet">Detaylar</th>
+
+    </tr>
+
+    @foreach (var x in Model)
+    {
+<tr>
+    <td>@x.MemberID</td>
+    <td>@x.Name</td>
+    <td>@x.Surname</td>
+    <td>@x.Mail</td>
+    <td>@x.Username</td>
+    <td>@x.Password</td>
+    <td>@x.Photo</td>
+    <td>@x.Telephone</td>
+    <td>@x.School</td>
+    <td><a href="/Member/Update/@x.MemberID" class="btn btn-warning">Düzenle</a></td>
+    <td>@Html.ActionLink("Sil", "Delete", new { id = x.MemberID }, new { @class = "btn btn-danger", onclick = "return confirm ('Gerçekten silmek istiyor musunuz')" })</td>
+    <td><a href="/Member/Details/@x.MemberID" class="btn btn-default">Detaylar</a></td>
+
+</tr>
+    }
+
+</table>
+
+
+
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+
+<a href="/Member/Add/" class="btn btn-info">Yeni Üye Ekle</a>

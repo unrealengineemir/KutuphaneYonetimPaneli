@@ -1,0 +1,27 @@
+﻿@model LibraryManagement.Models.Entity.Tbl_Writer
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="color:blue">Yazar Ekleme Ekranı</h2>
+
+<form class="form-group" method="post">
+
+    <div style="margin-top:15px">
+        <label>Ad</label>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Soyad</label>
+        @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Hakkında</label>
+        @Html.TextBoxFor(x => x.Detail, new { @class = "form-control" })
+    </div>
+    <br />
+    <button class="btn btn-primary">Yazar Ekle</button>
+
+</form>
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bcf07d1eefc2471597aa6e015e7032d9" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryDBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.Tbl_About" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.Tbl_Announcement" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.Tbl_Book" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.Tbl_Category" Width="1.5" PointX="1.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.Tbl_Contact" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.Tbl_Member" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.Tbl_Message" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.Tbl_Personel" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.Tbl_Process" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.Tbl_Punishment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.Tbl_Writer" Width="1.5" PointX="1.5" PointY="14.5" IsExpanded="true" />
+        <AssociationConnector Association="LibraryDBModel.FK_Tbl_Book_Tbl_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDBModel.FK_Tbl_Book_Tbl_Writer" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDBModel.FK_Tbl_Process_Tbl_Book" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDBModel.FK_Tbl_Process_Tbl_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDBModel.FK_Tbl_Punishment_Tbl_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDBModel.FK_Tbl_Process_Tbl_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryDBModel.FK_Tbl_Punishment_Tbl_Process" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,36 @@
+﻿@using LibraryManagement.Models.Entity
+@model List<Tbl_Process>
+@{
+    ViewBag.Title = "BookList";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+
+
+<table class="table table-bordered" style="text-align:center">
+
+    <tr>
+        <td>Alınan Kitap</td>
+        <td>Teslim Veren Personel</td>
+        <td>Kitabı Alma Tarihi</td>
+        <td>Teslim Edilmesi Gereken Tarih</td>
+        <td>Teslim Edilne Tarih</td>
+    </tr>
+
+  
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Tbl_Book.Name</td>
+                <td>@item.Tbl_Personel.Fullname</td>
+                <td>@item.PurchaseDate</td>
+                <td>@item.ReturnDate</td>
+                <td>@item.BroughDate</td>
+            </tr>
+        }
+
+
+   
+
+</table>

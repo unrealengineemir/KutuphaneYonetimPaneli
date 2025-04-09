@@ -1,0 +1,86 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS (jQuery ile birlikte) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #808080;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: dodgerblue;
+                    color: black;
+                }
+
+                /* Create a right-aligned (split) link inside the navigation bar */
+                .topnav a.split {
+                    float: right;
+                    background-color: #f3d014;
+                    color: red;
+                }
+    </style>
+</head>
+<body>
+
+    <div class="topnav">
+        <a class="active" href="/HomePage/Index/"><i class="glyphicon glyphicon-home"></i> Ana Sayfa</a>
+        <a class="active" href="/Category/Index/"><i class="glyphicon glyphicon-list"></i> Kategoriler</a>
+        <a class="active" href="/Book/Index/"><i class="glyphicon glyphicon-book"></i> Kitaplar</a>
+        <a class="active" href="/Writer/Index/"><i class="glyphicon glyphicon-pencil"></i> Yazarlar</a>
+        <a class="active" href="/Personel/Index/"><i class="glyphicon glyphicon-user"></i> Personeller</a>
+        <a class="active" href="/Member/Index/"><i class="glyphicon glyphicon-eye-open"></i> Üyeler</a>
+        @if (User.IsInRole("A"))
+        {
+            <a class="active" href="/BookTransactions/Index/"><i class="glyphicon glyphicon-collapse-up"></i> Kitap Al</a>
+            <a class="active" href="/BookTransactions/Transaction/"><i class="glyphicon glyphicon-collapse-down"></i> Kitap Ver</a>
+        }
+
+        <a class="active" href="/History/Index/"><i class="glyphicon glyphicon-sort"></i> İşlemler</a>
+        <a class="active" href="/Announcement/Index/"><i class="glyphicon glyphicon-sort"></i> Duyurular</a>
+        <a class="active" href="/Statistics/Index/"><i class="glyphicon glyphicon-sort"></i> İstatistikler</a>
+        <a class="active" href="/Statistics/Cards/"><i class="glyphicon glyphicon-camera"></i> Widgetlar</a>
+        <a class="active" href="/Weather/Index/"><i class="glyphicon glyphicon-cloud"></i> Hava Durumu</a>
+        <a class="active" href=""><i class="glyphicon glyphicon-picture"></i> Galeri</a>    
+        <a class="active" href="#home"><i class="glyphicon glyphicon-comment"></i> Yardım</a>
+        <a class="active" href="/Panel/LogOut/"><i class="glyphicon glyphicon-"></i> Çıkış</a>
+
+
+
+    </div>
+
+    <div style="padding-left:16px">
+        @RenderBody()
+    </div>
+
+</body>
+</html>
+

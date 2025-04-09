@@ -1,0 +1,79 @@
+﻿@model LibraryManagement.Models.Entity.Tbl_Process
+@{
+    ViewBag.Title = "TransactionUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+
+@using (Html.BeginForm("Update", "BookTransactions", FormMethod.Post))
+{
+
+    <div style="margin-top:15px"></div>
+    <div class="form-group">
+
+        <label>İşlem ID</label>
+        @Html.TextBoxFor(m => m.ProcessID, new { @class = "form-control" })
+
+    </div>
+
+    <div style="margin-top:15px">
+
+        <label>Kitap Ad</label>
+        @Html.TextBoxFor(m => m.Tbl_Book.Name, new { @class = "form-control" })
+
+    </div>
+
+    <div style="margin-top:15px">
+
+        <label>Üye</label>
+        @Html.TextBoxFor(m => m.Tbl_Member.Name, new { @class = "form-control" })
+
+    </div>
+
+    <div style="margin-top:15px">
+
+        <label>Personel</label>
+        @Html.TextBoxFor(m => m.Tbl_Personel.Fullname, new { @class = "form-control" })
+
+    </div>
+
+    <div style="margin-top:15px">
+
+        <label>Alış Tarihi</label>
+        @Html.TextBoxFor(m => m.PurchaseDate, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+
+    </div>
+
+    <div style="margin-top:15px">
+
+        <label>İade Edilmesi Gereken Tarih</label>
+        @Html.TextBoxFor(m => m.ReturnDate, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+
+    </div>
+
+    <div style="margin-top:15px">
+
+        <label>Üyenin İade Ettiği Tarih</label>
+        <input type="text" class="form-control" name="BroughDate" value="@DateTime.Now.ToShortDateString()"/>
+
+    </div>
+
+    <div style="margin-top:15px">
+
+        <label>Geç getirilen Tarih</label>
+        <input type="text" class="form-control" id="gecinput" value="@ViewBag.date" />
+
+    </div>
+    
+
+    <div style="margin-top:15px">
+
+        <button class="btn btn-group" style="background-color:mediumslateblue ; color:white">Kitabı iade et</button>
+
+    </div>
+
+}
+

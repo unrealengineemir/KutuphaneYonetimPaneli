@@ -1,0 +1,78 @@
+﻿@using LibraryManagement.Models.Entity
+@model List<Tbl_Book>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="color:mediumvioletred">@ViewBag.name @ViewBag.surname</h2>
+<br />
+<br />
+
+<table class="table table-striped" style="text-align: center">
+
+    <tr style="color: blueviolet; background-color: #D1D2E0">
+        <td>Kitap Adı</td>
+        <td>Kategori</td>    
+        <td>Basım Yılı</td>
+        <td>YayınEvi</td>
+        <td>Sayfa</td>
+    </tr>
+
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Name</td>
+            <td>@x.Tbl_Category.Name</td>         
+            <td>@x.Year</td>
+            <td>@x.PublishingHouse</td>
+            <td>@x.Page</td>
+        </tr>
+    }
+
+
+
+
+</table>
+
+
+
+
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Yeni Sosyal Medya Ekle</h2>
+            </div>
+            <form method="post" action="/Writer/Details/@ViewBag.dgr">
+
+                <div class="modal-body">
+
+                    <label>Sosyal Medya İsmi</label>
+                    <input type="text" name="NAME" class="form-control" />
+
+
+                    <br />
+
+                    <label>Sosyal Medya Linki</label>
+                    <input type="text" name="LİNK" class="form-control" />
+
+                    <br />
+
+                    <label>Sosyal Medya İkonu</label>
+                    <input type="text" name="İCON" class="form-control" />
+
+                    <br />
+
+                    <button class="btn btn-primary">Ekle</button>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+

@@ -1,0 +1,51 @@
+﻿@using LibraryManagement.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Tbl_Book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="text-align:center ; color:darkcyan">Kitap Listesi</h2>
+<br />
+<br />
+<table class="table table-striped" style="text-align:center">
+
+    <tr style="color: blueviolet; background-color: #D1D2E0">
+   
+        <th style="text-align:center">Kitap Adı</th>
+        <th style="text-align:center">Tür</th>
+        <th style="text-align:center">Yazar</th>
+        <th style="text-align:center">Basım Yılı</th>
+        <th style="text-align:center">Basım Evi</th>
+        <th style="text-align:center">Sayfa</th>
+        <th style="text-align:center">Durum</th>
+        <th style="text-align:center">Düzenle</th>
+        <th style="text-align:center">Sil</th>
+
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+         
+            <td>@x.Name</td>
+            <td>@x.Tbl_Category.Name</td>
+            <td>@x.Tbl_Writer.Name  @x.Tbl_Writer.Surname</td>
+            <td>@x.Year</td>
+            <td>@x.PublishingHouse</td>
+            <td>@x.Page</td>
+            <td>@x.Situation</td>
+            <td><a href="/Book/Update/@x.BookID" class="btn btn-warning">Düzenle</a></td>
+            <td>@Html.ActionLink("Sil", "Delete", new { id = x.BookID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz ? ')" })</td>
+        </tr>
+    }
+
+</table>
+
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+
+<a href="/Book/Add/" class="btn btn-info">Yeni Kitap Ekle</a>
+

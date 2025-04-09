@@ -1,0 +1,44 @@
+﻿@model LibraryManagement.Models.Entity.Tbl_Writer
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="color:orange">Yazar Güncelleme Ekranı</h2>
+
+
+@using (Html.BeginForm("Update", "Writer", FormMethod.Post))
+
+{
+    <div style="margin-top:15px">
+
+    <label>ID</label>
+    @Html.TextBoxFor(x => x.WriterID, new { @class = "form-control", @Readonly = "Readonly" })
+
+</div>
+
+<div style="margin-top:15px">
+    <label>Ad</label>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+</div>
+
+
+<div style="margin-top:15px">
+    <label>Soyad</label>
+    @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+</div>
+
+
+<div style="margin-top:15px">
+    <label>Hakkında</label>
+    @Html.TextBoxFor(x => x.Detail, new { @class = "form-control" })
+</div>
+
+<br />
+
+<button class="btn btn-success">Güncelle</button>
+
+}
+
+ 
+

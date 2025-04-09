@@ -1,0 +1,108 @@
+﻿@using LibraryManagement.Models.Entity
+@model List<Tbl_Announcement>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="text-align:center ; color:darkcyan">Duyuru Listesi</h2>
+<br />
+<br />
+
+
+
+<table class="table table-bordered" style="text-align:center">
+
+    <tr style="color: blueviolet; background-color: #D1D2E0">
+        <th style="text-align:center">Duyuru ID</th>
+        <th style="text-align:center">Kategori</th>
+        <th style="text-align:center">Tarih</th>
+        <th style="text-align:center">Detaylar</th>
+        <th style="text-align:center">Düzenle</th>
+        <th style="text-align:center">Sil</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+<tr>
+    <th>@x.ID</th>
+
+
+
+    <th>@x.Date</th>
+
+    <th>
+        <a href="/Announcement/Content/@x.ID" class="btn btn-default" style="background-color:burlywood ; color:white"
+           data-toggle="modal" data-target="#modal2">İçerik</a>
+    </th>
+    <th><a href="/Announcement/Update/@x.ID" class="btn btn-default" style="background-color:burlywood ; color:white">Düzenle</a></th>
+    <th><a href="/Announcement/Delete/@x.ID" class="btn btn-default" style="background-color:red ; color:white">Sil</a></th>
+</tr>
+    }
+
+</table>
+
+<button class="btn btn-info" data-toggle="modal" data-target="#modal1"><i class="fa fa-plus-circle" aria-hidden="true"></i>Yeni Duyuru Ekle</button>
+
+
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Yeni Duyuru Ekle</h2>
+            </div>
+            <form method="post" action="/Announcement/Add/">
+
+                <div class="modal-body">
+
+                    <label>Tarih</label>
+                    <input type="text" name="Date" class="form-control" value="@DateTime.Now.ToShortDateString()" readonly />
+
+                    <br />
+
+
+                    <label>Kategori</label>
+                    <input type="text" name="Category" class="form-control" required maxlength="50" />
+
+                    <br />
+
+
+                    <label>İçerik</label>
+                    <textarea name="Content" class="form-control" required maxlength="500" rows="8"></textarea>
+
+                    <br />
+
+
+
+                    <button class="btn btn-success">Ekle</button>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<div class="modal" id="modal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">İçerik</h2>
+            </div>
+
+            <div class="modal-body">
+
+                <p>@ViewBag.content</p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+

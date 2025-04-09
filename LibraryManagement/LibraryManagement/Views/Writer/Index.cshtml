@@ -1,0 +1,53 @@
+﻿@using LibraryManagement.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Tbl_Writer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="text-align:center ; color:darkcyan">Yazar Listesi</h2>
+<br />
+
+<table class="table table-bordered" style="text-align: center">
+
+    <tr style="color: blueviolet; background-color: #D1D2E0">
+        <th style="text-align: center">ID</th>
+        <th style="text-align: center">Ad</th>
+        <th style="text-align: center">Soyad</th>
+        <th style="text-align: center">Hakkında</th>
+        <th style="text-align: center">Düzenle</th>
+        <th style="text-align: center">Sil</th>
+        <th style="text-align: center">Detaylar</th>
+
+
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.WriterID</td>
+            <td>@x.Name</td>
+            <td>@x.Surname</td>
+            <td>@x.Detail</td>
+            <td><a href="/Writer/Update/@x.WriterID" class="btn btn-warning">Düzenle</a></td>
+            <td>@Html.ActionLink("Sil", "Delete", new { id = x.WriterID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz')" })</td>
+            <td><a href="/Writer/Details/@x.WriterID" class="btn btn-default">Detaylar</a></td>
+
+        </tr>
+    }
+
+
+</table>
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+
+<a href="/Writer/Add/" class="btn btn-info">Yeni Yazar Ekle</a>
+
+
+
+
+
+
+

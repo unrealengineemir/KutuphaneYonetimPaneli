@@ -1,0 +1,36 @@
+﻿@using LibraryManagement.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Tbl_Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="text-align:center ; color:darkcyan">Personel Listesi</h2>
+<br />
+
+<table class="table table-striped" style="text-align:center">
+
+    <tr style="color: blueviolet; background-color: #D1D2E0">
+        <th style="color:blueviolet ; text-align:center">ID</th>
+        <th style="color:blueviolet ; text-align:center">Ad Soyad</th>
+        <th style="color:blueviolet ; text-align:center">Düzenle</th>
+        <th style="color:blueviolet ; text-align:center">Sil</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.PersonelID</td>
+            <td>@x.Fullname</td>
+            <td><a href="/Personel/Update/@x.PersonelID" class="btn btn-warning">Düzenle</a></td>
+            <td>@Html.ActionLink("Sil", "Delete", new { id = x.PersonelID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz.')" })</td>
+        </tr>
+    }
+
+</table>
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+
+<a class="btn btn-info" href="/Personel/Add/">Yeni Personel Ekle</a>

@@ -1,0 +1,52 @@
+﻿@model LibraryManagement.Models.Entity.Tbl_Process
+@{
+    ViewBag.Title = "Transaction";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2 style="color:blue">Kitap Verme Ekranı</h2>
+
+@using (Html.BeginForm("Transaction", "BookTransactions", FormMethod.Post))
+{
+
+    <div style="margin-top:15px">
+        <label>Kitap Seç</label>
+        @Html.DropDownListFor(x=>x.Tbl_Book.BookID ,(List<SelectListItem>)ViewBag.book , new {@class="form-control" })
+    </div>
+
+
+    <div style="margin-top:15px">
+        <label>Üye Seç</label>
+       @Html.DropDownListFor(x=>x.Tbl_Member.MemberID , (List<SelectListItem>)ViewBag.member , new {@class="form-control" })
+    </div>
+
+
+    <div style="margin-top:15px">
+        <label>Personel Seç</label>
+        @Html.DropDownListFor(x=>x.Tbl_Personel.PersonelID , (List<SelectListItem>)ViewBag.personel , new {@class="form-control" })
+    </div>
+
+
+    <div style="margin-top:15px">
+        <label>Kitap Verilme Tarihi</label>
+        <input type="text" class="form-control" name="PurchaseDate" value="@DateTime.Now.ToShortDateString()" />
+    </div>
+
+    <div style="margin-top:15px">
+        <label>Kitap Teslim Tarihi</label>
+        <input type="text" class="form-control" name="ReturnDate" value="@DateTime.Now.AddDays(7).ToShortDateString()" />
+    </div>
+
+    <div>
+
+        <input type="hidden" value="false" name="TransactionStatus" />
+
+    </div>
+
+
+    <br />
+
+
+    <button class="btn btn-group" style="background-color:#ba23c3 ; color:white">Kitap Ver</button>
+}

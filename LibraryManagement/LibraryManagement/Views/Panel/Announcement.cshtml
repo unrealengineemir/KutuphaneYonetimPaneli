@@ -1,0 +1,33 @@
+﻿@using LibraryManagement.Models.Entity
+@model List<Tbl_Announcement>
+@{
+    ViewBag.Title = "Announcement";
+    Layout = "~/Views/Shared/Panel.cshtml";
+}
+
+
+
+@foreach (var item in Model)
+{
+
+
+<div class="post">
+    <div class="user-block">
+        <img class="img-circle img-bordered-sm" src="~/Images/lib1.jpg" alt="user image">
+        <span class="username">
+            <a href="#">@item.Category</a>
+
+        </span>
+        <span class="description">@Convert.ToDateTime(item.Date).ToString("dd/MM/yyyy")</span>
+    </div>
+    <!-- /.user-block -->
+    <p>
+       @item.Content
+    </p>
+
+
+    
+   
+</div>
+}
+

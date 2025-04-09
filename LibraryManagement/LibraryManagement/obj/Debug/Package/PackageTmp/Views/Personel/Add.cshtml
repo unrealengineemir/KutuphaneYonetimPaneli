@@ -1,0 +1,24 @@
+﻿@model LibraryManagement.Models.Entity.Tbl_Personel
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="color:blue">Personel Ekleme Ekranı</h2>
+<br />
+
+@using (Html.BeginForm("Add", "Personel", FormMethod.Post))
+{
+
+<div>
+    <label> Ad Soyad</label>
+    @Html.TextBoxFor(x => x.Fullname, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Fullname, "", new { @style = "color:yellow" })
+
+</div>
+
+    <br />
+
+    <button class="btn btn-primary">Personel Ekle</button>
+}
+

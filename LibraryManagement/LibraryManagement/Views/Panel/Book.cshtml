@@ -1,0 +1,193 @@
+﻿@using LibraryManagement.Models.Entity
+@model List<Tbl_Process>
+
+@{
+    ViewBag.Title = "Book";
+    Layout = "~/Views/Shared/Panel.cshtml";
+}
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title></title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Ionicons -->
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- Theme style -->
+
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+    <!-- Google Font: Source Sans Pro -->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+    <div class="wrapper">
+
+        <section class="content-header">
+
+            <div class="container-fluid">
+
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+
+                        <h1></h1>
+
+                    </div>
+
+                </div>
+
+            </div><!-- /.container-fluid -->
+
+        </section>
+
+        <!-- Main content -->
+
+        <section class="content">
+
+            <div class="container-fluid">
+
+                <!-- /.row -->
+
+                <div class="row">
+
+                    <div class="col-12">
+
+                        <div class="card">
+
+                            <div class="card-header">
+
+                                <h3 class="card-title" style="color:cornflowerblue">Mevcut Kitaplarım</h3>
+
+                                <div class="card-tools">
+
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+
+                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                        <div class="input-group-append">
+
+                                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- /.card-header -->
+
+                            <div class="card-body table-responsive p-0">
+
+                                <table class="table table-hover text-nowrap">
+
+                                    <thead style="text-align:center">
+
+                                        <tr>
+
+                                            <th>Kitap Adı</th>
+
+                                            <th>Üye Adı</th>
+
+                                            <th>Personel</th>
+
+                                            <th>Verilme Tarihi</th>
+
+                                            <th>Teslim Edilecek Tarih</th>
+
+                                            <th>Teslim Edilen Tarih</th>
+
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody style="text-align:center">
+                                        @foreach (var x in Model)
+                                        {
+                                            <tr>
+
+                                                <td>@x.Tbl_Book.Name</td>
+
+                                                <td>@x.Tbl_Member.Name</td>
+
+                                                <td>@x.Tbl_Personel.Fullname</td>
+
+                                                <td><span class="tag tag-success">@Convert.ToDateTime(x.PurchaseDate).ToString("dd/MM/yyyy")</span></td>
+
+                                                <td>@Convert.ToDateTime(x.ReturnDate).ToString("dd/MM/yyyy")</td>
+
+
+                                                @if (x.BroughDate == null)
+
+                                                {
+                                                    <td style="color:red">Henüz teslim edilmedi</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>@Convert.ToDateTime(x.BroughDate).ToString("dd/MM/yyyy")</td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                            <!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.card -->
+
+                    </div>
+
+                </div>
+
+                <!-- /.row -->
+                <!-- /.row -->
+
+            </div><!-- /.container-fluid -->
+
+        </section>
+
+        <!-- /.content -->
+
+    </div>
+
+    <!-- /.content-wrapper -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+
+</body>
+
+</html>
+
+
+

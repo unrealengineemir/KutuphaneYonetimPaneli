@@ -1,0 +1,43 @@
+﻿@model LibraryManagement.Models.Entity.Tbl_Announcement
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("Update", "Announcement", FormMethod.Post))
+{
+
+    <div style="margin-top:15px">
+
+        <label>ID</label>
+        @Html.TextBoxFor(x => x.ID, new { @class = "form-control" , @readonly ="readonly"})
+    </div>
+
+    <div style="margin-top:15px">
+
+        <label>Kategori</label>
+        @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:15px">
+
+        <label>Kategori</label>
+        @Html.TextBoxFor(x => x.Category, new { @class = "form-control" })
+    </div>
+
+
+    <div style="margin-top:15px">
+
+        <label>İçerik</label>
+        @Html.TextBoxFor(x => x.Content, new { @class = "form-control" })
+    </div>
+
+    <br />
+    <button class="btn btn-warning"> Güncelle</button>
+
+
+
+}
+
+

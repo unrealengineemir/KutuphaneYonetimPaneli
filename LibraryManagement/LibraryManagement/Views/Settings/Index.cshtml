@@ -1,0 +1,83 @@
+﻿@using LibraryManagement.Models.Entity
+@model List<Tbl_Admin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>Admin Listesi</h2>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<table class="table table-bordered" style="text-align:center">
+
+    <tr>
+        <td>ID</td>
+        <td>Mail</td>
+        <td>Yetki</td>
+        <td>Güncelle</td>
+        <td>Sil</td>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.ID</td>
+            <td>@x.Mail</td>
+            <td>@x.Authority</td>
+            <td><a href="/Settings/Update/@x.ID/" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Settings/Delete/@x.ID/" class="btn btn-danger">Sil</a></td>
+        </tr>
+    }
+
+</table>
+
+<!-- Button to trigger modal -->
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+    Yeni Admin Ekle
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="myModalLabel">Admin Ekleme Paneli </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form method="post" action="/Settings/Add/">
+
+                <div class="modal-body">
+
+                    <div style="margin-top:15px">
+
+                        <label>Mail</label>
+                        <input type="text" class="form-control" name="Mail" required />
+                    </div>
+
+                    <div style="margin-top:15px">
+
+                        <label>Şifre</label>
+                        <input type="text" class="form-control" name="Password" required />
+                    </div>
+
+                    <div style="margin-top:15px">
+
+                        <label>Yetki</label>
+                        <input type="text" class="form-control" name="Authority" required />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

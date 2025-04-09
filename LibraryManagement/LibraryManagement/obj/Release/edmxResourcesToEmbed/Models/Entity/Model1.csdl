@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tbl_About">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Announcement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Tbl_Book">
+    <Key>
+      <PropertyRef Name="BookID" />
+    </Key>
+    <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="Byte" />
+    <Property Name="Writer" Type="Int16" />
+    <Property Name="Year" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+    <Property Name="PublishingHouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Page" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Situation" Type="Boolean" />
+    <Property Name="Picture" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="Summary" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tbl_Category" Relationship="Self.FK_Tbl_Book_Tbl_Category" FromRole="Tbl_Book" ToRole="Tbl_Category" />
+    <NavigationProperty Name="Tbl_Writer" Relationship="Self.FK_Tbl_Book_Tbl_Writer" FromRole="Tbl_Book" ToRole="Tbl_Writer" />
+    <NavigationProperty Name="Tbl_Process" Relationship="Self.FK_Tbl_Process_Tbl_Book" FromRole="Tbl_Book" ToRole="Tbl_Process" />
+  </EntityType>
+  <EntityType Name="Tbl_Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Situation" Type="Boolean" />
+    <NavigationProperty Name="Tbl_Book" Relationship="Self.FK_Tbl_Book_Tbl_Category" FromRole="Tbl_Category" ToRole="Tbl_Book" />
+  </EntityType>
+  <EntityType Name="Tbl_Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Buyer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Tbl_Member">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Telephone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="School" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Authority" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Tbl_Process" Relationship="Self.FK_Tbl_Process_Tbl_Member" FromRole="Tbl_Member" ToRole="Tbl_Process" />
+    <NavigationProperty Name="Tbl_Punishment" Relationship="Self.FK_Tbl_Punishment_Tbl_Member" FromRole="Tbl_Member" ToRole="Tbl_Punishment" />
+  </EntityType>
+  <EntityType Name="Tbl_Message">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Personel">
+    <Key>
+      <PropertyRef Name="PersonelID" />
+    </Key>
+    <Property Name="PersonelID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fullname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tbl_Process" Relationship="Self.FK_Tbl_Process_Tbl_Personel" FromRole="Tbl_Personel" ToRole="Tbl_Process" />
+  </EntityType>
+  <EntityType Name="Tbl_Process">
+    <Key>
+      <PropertyRef Name="ProcessID" />
+    </Key>
+    <Property Name="ProcessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Book" Type="Int32" />
+    <Property Name="Member" Type="Int32" />
+    <Property Name="Personel" Type="Byte" />
+    <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="0" />
+    <Property Name="BroughDate" Type="DateTime" Precision="0" />
+    <Property Name="TransactionStatus" Type="Boolean" />
+    <NavigationProperty Name="Tbl_Book" Relationship="Self.FK_Tbl_Process_Tbl_Book" FromRole="Tbl_Process" ToRole="Tbl_Book" />
+    <NavigationProperty Name="Tbl_Member" Relationship="Self.FK_Tbl_Process_Tbl_Member" FromRole="Tbl_Process" ToRole="Tbl_Member" />
+    <NavigationProperty Name="Tbl_Personel" Relationship="Self.FK_Tbl_Process_Tbl_Personel" FromRole="Tbl_Process" ToRole="Tbl_Personel" />
+    <NavigationProperty Name="Tbl_Punishment" Relationship="Self.FK_Tbl_Punishment_Tbl_Process" FromRole="Tbl_Process" ToRole="Tbl_Punishment" />
+  </EntityType>
+  <EntityType Name="Tbl_Punishment">
+    <Key>
+      <PropertyRef Name="PunishmentID" />
+    </Key>
+    <Property Name="PunishmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Member" Type="Int32" />
+    <Property Name="Start" Type="DateTime" Precision="0" />
+    <Property Name="Finish" Type="DateTime" Precision="0" />
+    <Property Name="Money" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Process" Type="Int32" />
+    <NavigationProperty Name="Tbl_Member" Relationship="Self.FK_Tbl_Punishment_Tbl_Member" FromRole="Tbl_Punishment" ToRole="Tbl_Member" />
+    <NavigationProperty Name="Tbl_Process" Relationship="Self.FK_Tbl_Punishment_Tbl_Process" FromRole="Tbl_Punishment" ToRole="Tbl_Process" />
+  </EntityType>
+  <EntityType Name="Tbl_Writer">
+    <Key>
+      <PropertyRef Name="WriterID" />
+    </Key>
+    <Property Name="WriterID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Detail" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tbl_Book" Relationship="Self.FK_Tbl_Book_Tbl_Writer" FromRole="Tbl_Writer" ToRole="Tbl_Book" />
+  </EntityType>
+  <Association Name="FK_Tbl_Book_Tbl_Category">
+    <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+    <End Role="Tbl_Book" Type="Self.Tbl_Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Tbl_Book">
+        <PropertyRef Name="Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Book_Tbl_Writer">
+    <End Role="Tbl_Writer" Type="Self.Tbl_Writer" Multiplicity="0..1" />
+    <End Role="Tbl_Book" Type="Self.Tbl_Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Writer">
+        <PropertyRef Name="WriterID" />
+      </Principal>
+      <Dependent Role="Tbl_Book">
+        <PropertyRef Name="Writer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Process_Tbl_Book">
+    <End Role="Tbl_Book" Type="Self.Tbl_Book" Multiplicity="0..1" />
+    <End Role="Tbl_Process" Type="Self.Tbl_Process" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Book">
+        <PropertyRef Name="BookID" />
+      </Principal>
+      <Dependent Role="Tbl_Process">
+        <PropertyRef Name="Book" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Process_Tbl_Member">
+    <End Role="Tbl_Member" Type="Self.Tbl_Member" Multiplicity="0..1" />
+    <End Role="Tbl_Process" Type="Self.Tbl_Process" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Member">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="Tbl_Process">
+        <PropertyRef Name="Member" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Punishment_Tbl_Member">
+    <End Role="Tbl_Member" Type="Self.Tbl_Member" Multiplicity="0..1" />
+    <End Role="Tbl_Punishment" Type="Self.Tbl_Punishment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Member">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="Tbl_Punishment">
+        <PropertyRef Name="Member" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Process_Tbl_Personel">
+    <End Role="Tbl_Personel" Type="Self.Tbl_Personel" Multiplicity="0..1" />
+    <End Role="Tbl_Process" Type="Self.Tbl_Process" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Personel">
+        <PropertyRef Name="PersonelID" />
+      </Principal>
+      <Dependent Role="Tbl_Process">
+        <PropertyRef Name="Personel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Punishment_Tbl_Process">
+    <End Role="Tbl_Process" Type="Self.Tbl_Process" Multiplicity="0..1" />
+    <End Role="Tbl_Punishment" Type="Self.Tbl_Punishment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Process">
+        <PropertyRef Name="ProcessID" />
+      </Principal>
+      <Dependent Role="Tbl_Punishment">
+        <PropertyRef Name="Process" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LibraryDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Tbl_About" EntityType="Self.Tbl_About" />
+    <EntitySet Name="Tbl_Announcement" EntityType="Self.Tbl_Announcement" />
+    <EntitySet Name="Tbl_Book" EntityType="Self.Tbl_Book" />
+    <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" />
+    <EntitySet Name="Tbl_Contact" EntityType="Self.Tbl_Contact" />
+    <EntitySet Name="Tbl_Member" EntityType="Self.Tbl_Member" />
+    <EntitySet Name="Tbl_Message" EntityType="Self.Tbl_Message" />
+    <EntitySet Name="Tbl_Personel" EntityType="Self.Tbl_Personel" />
+    <EntitySet Name="Tbl_Process" EntityType="Self.Tbl_Process" />
+    <EntitySet Name="Tbl_Punishment" EntityType="Self.Tbl_Punishment" />
+    <EntitySet Name="Tbl_Writer" EntityType="Self.Tbl_Writer" />
+    <AssociationSet Name="FK_Tbl_Book_Tbl_Category" Association="Self.FK_Tbl_Book_Tbl_Category">
+      <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+      <End Role="Tbl_Book" EntitySet="Tbl_Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Book_Tbl_Writer" Association="Self.FK_Tbl_Book_Tbl_Writer">
+      <End Role="Tbl_Writer" EntitySet="Tbl_Writer" />
+      <End Role="Tbl_Book" EntitySet="Tbl_Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Process_Tbl_Book" Association="Self.FK_Tbl_Process_Tbl_Book">
+      <End Role="Tbl_Book" EntitySet="Tbl_Book" />
+      <End Role="Tbl_Process" EntitySet="Tbl_Process" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Process_Tbl_Member" Association="Self.FK_Tbl_Process_Tbl_Member">
+      <End Role="Tbl_Member" EntitySet="Tbl_Member" />
+      <End Role="Tbl_Process" EntitySet="Tbl_Process" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Punishment_Tbl_Member" Association="Self.FK_Tbl_Punishment_Tbl_Member">
+      <End Role="Tbl_Member" EntitySet="Tbl_Member" />
+      <End Role="Tbl_Punishment" EntitySet="Tbl_Punishment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Process_Tbl_Personel" Association="Self.FK_Tbl_Process_Tbl_Personel">
+      <End Role="Tbl_Personel" EntitySet="Tbl_Personel" />
+      <End Role="Tbl_Process" EntitySet="Tbl_Process" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Punishment_Tbl_Process" Association="Self.FK_Tbl_Punishment_Tbl_Process">
+      <End Role="Tbl_Process" EntitySet="Tbl_Process" />
+      <End Role="Tbl_Punishment" EntitySet="Tbl_Punishment" />
+    </AssociationSet>
+    <FunctionImport Name="BOOKWRİTER" ReturnType="Collection(String)" />
+    <FunctionImport Name="MAXBOOK" ReturnType="Collection(String)" />
+    <FunctionImport Name="MAXMEMBER" ReturnType="Collection(String)" />
+    <FunctionImport Name="MAXPERSONEL" ReturnType="Collection(String)" />
+    <FunctionImport Name="PROFILEBOOK" ReturnType="Collection(String)" />
+    <FunctionImport Name="PublishinHouse" ReturnType="Collection(String)" />
+    <FunctionImport Name="TODAY" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="TODAYBOOKS" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="TODAYBOOKS1" ReturnType="Collection(Int32)" />
+  </EntityContainer>
+</Schema>

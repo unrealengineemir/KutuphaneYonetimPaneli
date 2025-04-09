@@ -1,0 +1,68 @@
+﻿@model LibraryManagement.Models.Entity.Tbl_Book
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="color:orange">Kitap Güncelleme Paneli</h2>
+
+@using (Html.BeginForm("Update", "Book", FormMethod.Post))
+{ 
+
+
+<div style="margin-top:15px">
+
+    <label>ID</label>
+    @Html.TextBoxFor(m => m.BookID, new { @class = "form-control", @Readonly = "Readonly" } )
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Kitap Adı</label>
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+</div>
+
+
+<div style="margin-top:15px">
+
+    <label>Tür</label>
+    @Html.DropDownListFor(x=>x.Tbl_Category.CategoryID , (List<SelectListItem>)ViewBag.item1, new {@class="form-control" })
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Yazar</label>
+    @Html.DropDownListFor(x=>x.Tbl_Writer.WriterID , (List<SelectListItem>)ViewBag.item2 , new {@class="form-control" })
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Basım Yılı</label>
+    @Html.TextBoxFor(m => m.Year, new { @class = "form-control" })
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Yayınevi</label>
+    @Html.TextBoxFor(m => m.PublishingHouse, new { @class = "form-control" })
+
+</div>
+
+<div style="margin-top:15px">
+
+    <label>Sayfa</label>
+    @Html.TextBoxFor(m => m.Page, new { @class = "form-control" })
+
+</div>
+
+<br />
+
+<button class="btn btn-success">Güncelle</button>
+
+}
+
